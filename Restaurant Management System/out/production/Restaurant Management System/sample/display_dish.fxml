@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="500.0" prefWidth="800.0" style="-fx-background-color: #FFFF;" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.DisplayDishController">
+   <children>
+      <ImageView fitHeight="500.0" fitWidth="286.0" pickOnBounds="true">
+         <image>
+            <Image url="@cover.jpg" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="172.0" fitWidth="514.0" layoutX="286.0" pickOnBounds="true">
+         <image>
+            <Image url="@logo.jpg" />
+         </image>
+      </ImageView>
+      <TableView fx:id="dish_table" layoutX="370.0" layoutY="244.0" prefHeight="250.0" prefWidth="390.0">
+        <columns>
+          <TableColumn fx:id="dishid_col" prefWidth="46.4000244140625" text="Dish ID" />
+          <TableColumn fx:id="dishname_col" prefWidth="154.4000244140625" text="Dish Name" />
+            <TableColumn fx:id="catname_col" prefWidth="103.20001220703125" text="Category Name" />
+            <TableColumn fx:id="catid_col" prefWidth="88.0" text="Category ID" />
+        </columns>
+      </TableView>
+      <JFXTextField fx:id="search" layoutX="370.0" layoutY="184.0" prefHeight="26.0" prefWidth="390.0" promptText="Search Dish" />
+   </children>
+</AnchorPane>

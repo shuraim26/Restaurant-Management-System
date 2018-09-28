@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="500.0" prefWidth="800.0" style="-fx-background-color: #FFFF;" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.DisplayCatController">
+   <children>
+      <ImageView fitHeight="500.0" fitWidth="286.0" pickOnBounds="true">
+         <image>
+            <Image url="@cover.jpg" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="172.0" fitWidth="514.0" layoutX="286.0" pickOnBounds="true">
+         <image>
+            <Image url="@logo.jpg" />
+         </image>
+      </ImageView>
+      <TableView fx:id="cat_table" layoutX="370.0" layoutY="244.0" prefHeight="250.0" prefWidth="390.0">
+        <columns>
+          <TableColumn fx:id="catid_col" prefWidth="88.00006103515625" text="Category ID" />
+          <TableColumn fx:id="catname_col" prefWidth="302.39990234375" text="Category Name" />
+        </columns>
+      </TableView>
+      <JFXTextField fx:id="search" layoutX="370.0" layoutY="184.0" prefHeight="26.0" prefWidth="390.0" promptText="Search Category" />
+   </children>
+</AnchorPane>

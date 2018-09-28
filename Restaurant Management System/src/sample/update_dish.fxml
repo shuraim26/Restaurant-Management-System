@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXComboBox?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="500.0" prefWidth="800.0" style="-fx-background-color: #FFFF;" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.UpdateController">
+   <children>
+      <ImageView fitHeight="500.0" fitWidth="286.0" pickOnBounds="true">
+         <image>
+            <Image url="@cover.jpg" />
+         </image>
+      </ImageView>
+      <JFXTextField fx:id="dish_id" layoutX="386.0" layoutY="232.0" prefHeight="35.0" prefWidth="279.0" promptText="Enter Dish ID" />
+      <JFXButton fx:id="search_dish" contentDisplay="GRAPHIC_ONLY" layoutX="666.0" layoutY="226.0" onAction="#retrieve" prefHeight="48.0" prefWidth="42.0">
+         <graphic>
+            <FontAwesomeIcon glyphName="ARROW_CIRCLE_RIGHT" size="40" />
+         </graphic>
+      </JFXButton>
+      <ImageView fitHeight="172.0" fitWidth="514.0" layoutX="286.0" pickOnBounds="true">
+         <image>
+            <Image url="@logo.jpg" />
+         </image>
+      </ImageView>
+      <Label layoutX="332.0" layoutY="289.0" prefHeight="48.0" prefWidth="87.0" text="Name:">
+         <font>
+            <Font name="System Bold" size="24.0" />
+         </font>
+      </Label>
+      <Label layoutX="332.0" layoutY="337.0" prefHeight="48.0" prefWidth="126.0" text="Category:">
+         <font>
+            <Font name="System Bold" size="24.0" />
+         </font>
+      </Label>
+      <Label layoutX="332.0" layoutY="385.0" prefHeight="48.0" prefWidth="87.0" text="Price:">
+         <font>
+            <Font name="System Bold" size="24.0" />
+         </font>
+      </Label>
+      <Label layoutX="413.0" layoutY="163.0" prefHeight="62.0" prefWidth="259.0" text="DELETE DISH">
+         <font>
+            <Font name="System Bold Italic" size="40.0" />
+         </font>
+      </Label>
+      <JFXButton contentDisplay="GRAPHIC_ONLY" layoutX="517.0" layoutY="443.0" onAction="#update_dish" prefHeight="48.0" prefWidth="42.0">
+         <graphic>
+            <FontAwesomeIcon glyphName="ARROW_CIRCLE_RIGHT" size="40" />
+         </graphic>
+      </JFXButton>
+      <JFXTextField fx:id="dish_name" layoutX="475.0" layoutY="301.0" prefHeight="26.0" prefWidth="259.0" />
+      <JFXTextField fx:id="dish_price" layoutX="475.0" layoutY="395.0" prefHeight="26.0" prefWidth="259.0" />
+      <JFXComboBox fx:id="dish_cat" layoutX="475.0" layoutY="348.0" prefHeight="26.0" prefWidth="259.0" />
+   </children>
+</AnchorPane>
