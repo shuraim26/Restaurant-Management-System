@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.HomeController">
+   <children>
+      <ImageView fitHeight="506.0" fitWidth="286.0" layoutY="-5.0" pickOnBounds="true">
+         <image>
+            <Image url="@cover.jpg" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="112.0" fitWidth="716.0" layoutX="286.0" pickOnBounds="true">
+         <image>
+            <Image url="@logo.jpg" />
+         </image>
+      </ImageView>
+      <JFXButton fx:id="back" contentDisplay="GRAPHIC_ONLY" layoutX="286.0" layoutY="112.0" onAction="#back" prefHeight="42.0" prefWidth="43.0">
+         <graphic>
+            <FontAwesomeIcon glyphName="ARROW_LEFT" size="45" />
+         </graphic>
+      </JFXButton>
+      <JFXButton fx:id="home" contentDisplay="GRAPHIC_ONLY" layoutX="613.0" layoutY="112.0" onAction="#home" prefHeight="42.0" prefWidth="43.0">
+         <graphic>
+            <FontAwesomeIcon glyphName="HOME" size="45" />
+         </graphic>
+      </JFXButton>
+      <JFXButton fx:id="out" contentDisplay="GRAPHIC_ONLY" layoutX="944.0" layoutY="112.0" onAction="#out" prefHeight="42.0" prefWidth="43.0">
+         <graphic>
+            <FontAwesomeIcon glyphName="SIGN_OUT" size="45" />
+         </graphic>
+      </JFXButton>
+      <Button fx:id="dash" layoutX="416.0" layoutY="184.0" mnemonicParsing="false" onAction="#dash" prefHeight="26.0" prefWidth="452.0" text="Category &amp; Dish Management">
+         <font>
+            <Font size="30.0" />
+         </font>
+      </Button>
+      <Button fx:id="orders" layoutX="418.0" layoutY="284.0" mnemonicParsing="false" onAction="#orders" prefHeight="26.0" prefWidth="452.0" text="Orders">
+         <font>
+            <Font size="30.0" />
+         </font>
+      </Button>
+      <Button fx:id="bill" layoutX="416.0" layoutY="390.0" mnemonicParsing="false" onAction="#bill" prefHeight="26.0" prefWidth="452.0" text="Billing">
+         <font>
+            <Font size="30.0" />
+         </font>
+      </Button>
+   </children>
+</AnchorPane>

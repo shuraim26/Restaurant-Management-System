@@ -7,20 +7,37 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Scene;
 import javafx.scene.control.Alert;
+import javafx.scene.layout.AnchorPane;
+import javafx.stage.Stage;
 
+import java.io.IOException;
 import java.net.URL;
-import java.sql.*;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ResourceBundle;
 
-public class AddController implements Initializable {
+public class AddDishController implements Initializable {
+
+    @FXML
+    private JFXButton back;
+
+    @FXML
+    private JFXButton home;
+
+    @FXML
+    private JFXButton out;
 
     @FXML
     private JFXTextField dish_name;
 
     @FXML
-    private JFXButton add_btn;
+    private JFXButton ok;
 
     @FXML
     private JFXComboBox<String> dish_cat;
@@ -30,15 +47,17 @@ public class AddController implements Initializable {
 
     ObservableList<String> list= FXCollections.observableArrayList();
 
+    Connection con=DBConnection.getConnection();
     PreparedStatement ps=null;
     ResultSet rs=null;
 
+    public AddDishController() throws SQLException {
+    }
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
         try {
-            Connection con=DBConnection.getConnection();
 
             String sql="select * from categories";
             ps=con.prepareStatement(sql);
@@ -58,8 +77,6 @@ public class AddController implements Initializable {
 
     @FXML
     public void add_dish(ActionEvent actionEvent) throws SQLException {
-
-        Connection con=DBConnection.getConnection();
 
         if(dish_name.getText().isEmpty() || dish_cat.getValue().isEmpty() || dish_price.getText().isEmpty())
         {
@@ -96,5 +113,32 @@ public class AddController implements Initializable {
                 dish_price.setText("");
             }
         }
+    }
+
+    @FXML
+    public void back(ActionEvent actionEvent) throws IOException {
+        Stage stage = (Stage) back.getScene().getWindow();
+        AnchorPane root;
+        root = (AnchorPane) FXMLLoader.load(getClass().getResource("dashboard.fxml"));
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
+    }
+
+    @FXML
+    public void home(ActionEvent actionEvent) throws IOException {
+        Stage stage = (Stage) home.getScene().getWindow();
+        AnchorPane root;
+        root = (AnchorPane) FXMLLoader.load(getClass().getResource("home.fxml"));
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
+    }
+
+    @FXML
+    public void out(ActionEvent actionEvent) throws IOException {
+        Stage stage = (Stage) out.getScene().getWindow();
+        AnchorPane root;
+        root = (AnchorPane) FXMLLoader.load(getClass().getResource("sample.fxml"));
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
     }
 }
