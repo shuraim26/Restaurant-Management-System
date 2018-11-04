@@ -29,6 +29,9 @@ public class Controller {
     private Button login;
 
     @FXML
+    private Button admin;
+
+    @FXML
     public void login(ActionEvent actionEvent) throws SQLException, ClassNotFoundException, IOException {
         Connection con=DBConnection.getConnection();
 
@@ -40,7 +43,7 @@ public class Controller {
         {
             Stage stage = (Stage) login.getScene().getWindow();
             AnchorPane root;
-            root = (AnchorPane) FXMLLoader.load(getClass().getResource("dashboard.fxml"));
+            root = (AnchorPane) FXMLLoader.load(getClass().getResource("home.fxml"));
             Scene scene = new Scene(root);
             stage.setScene(scene);
         }
@@ -51,5 +54,14 @@ public class Controller {
             errorAlert.setContentText("Invalid Username/Password");
             errorAlert.showAndWait();
         }
+    }
+
+    @FXML
+    public void admin(ActionEvent actionEvent) throws IOException {
+        Stage stage = (Stage) login.getScene().getWindow();
+        AnchorPane root;
+        root = (AnchorPane) FXMLLoader.load(getClass().getResource("admin.fxml"));
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
     }
 }

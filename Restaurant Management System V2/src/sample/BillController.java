@@ -162,14 +162,16 @@ public class BillController implements Initializable {
 
                 while (rs.next()) {
                     rs2= con.createStatement().executeQuery("select * from prices where dish_id=" + rs.getString("dish_id"));
+
+                    while (rs2.next())
+                    {
+                        oblist.add(new ModelBillTable(rs.getString("dish_id"), rs.getString("dish_name"), rs.getString("cat_name"), rs2.getString("price"), quant.getText()));
+
+                        subtotal = subtotal + (Float.valueOf(rs2.getString("price")) * Integer.parseInt(quant.getText()));
+                    }
                 }
 
-                while (rs2.next())
-                {
-                    oblist.add(new ModelBillTable(rs.getString("dish_id"), rs.getString("dish_name"), rs.getString("cat_name"), rs2.getString("price"), quant.getText()));
 
-                    subtotal = subtotal + (Float.valueOf(rs2.getString("price")) * Integer.parseInt(quant.getText()));
-                }
 
             } catch (SQLException e) {
                 e.printStackTrace();
@@ -369,14 +371,6 @@ public class BillController implements Initializable {
                 }
         );
 
-        try {
-            autocomplete();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
-        }
-
         discountper.textProperty().addListener((observable,oldvalue,newvalue) -> {
 
             if (Integer.parseInt(discountper.getText())>100) {
@@ -432,16 +426,6 @@ public class BillController implements Initializable {
                 {
                     serviceper=0;
                     calculatebillv2();
-                }
-            }
-        });
-
-        searchquant.textProperty().addListener(new ChangeListener<String>() {
-            @Override
-            public void changed(ObservableValue<? extends String> observable, String oldValue,
-                                String newValue) {
-                if (!newValue.matches("\\d*")) {
-                    searchquant.setText(newValue.replaceAll("[^\\d]", ""));
                 }
             }
         });
@@ -520,9 +504,14 @@ public class BillController implements Initializable {
                 while(rs.next()) {
                     rs2 = con.createStatement().executeQuery("select * from prices where dish_id=" + rs.getString("dish_id"));
 
-                    if (rs.next() && rs2.next()) {
+                    if (rs.next()) {
 
-                        oblist.add(new ModelBillTable(rs.getString("dish_id"), rs.getString("dish_name"), rs.getString("cat_name"), rs2.getString("price"), searchquant.getText()));
+                        String x=null;
+
+                        if(rs2.next())
+                            x=rs2.getString("price");
+
+                        oblist.add(new ModelBillTable(rs.getString("dish_id"), rs.getString("dish_name"), rs.getString("cat_name"), x, searchquant.getText()));
 
                         subtotal = subtotal + (Float.valueOf(rs2.getString("price")) * Integer.parseInt(searchquant.getText()));
                     } else {

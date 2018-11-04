@@ -17,9 +17,9 @@
    <children>
       <TableView fx:id="billtable" layoutX="282.0" layoutY="64.0" prefHeight="207.0" prefWidth="506.0">
         <columns>
-          <TableColumn fx:id="prodidcol" prefWidth="67.20001220703125" text="Dish ID" />
-          <TableColumn fx:id="namecol" prefWidth="152.800048828125" text="Name" />
-            <TableColumn fx:id="prodcatcol" prefWidth="79.199951171875" text="Category" />
+          <TableColumn fx:id="dish_id_col" prefWidth="67.20001220703125" text="Dish ID" />
+          <TableColumn fx:id="name_col" prefWidth="152.800048828125" text="Name" />
+            <TableColumn fx:id="cat_col" prefWidth="79.199951171875" text="Category" />
             <TableColumn fx:id="quantcol" prefWidth="54.4000244140625" text="Quantity" />
             <TableColumn fx:id="pricecol" prefWidth="63.20001220703125" text="Unit Price" />
             <TableColumn fx:id="totalcol" maxWidth="1.7976931348623157E308" prefWidth="104.79998779296875" text="Total Price" />
@@ -80,7 +80,7 @@
             <Font size="18.0" />
          </font>
       </Label>
-      <JFXTextField fx:id="quant" layoutX="16.0" layoutY="304.0" prefHeight="39.0" prefWidth="214.0" promptText="Enter Quantity" />
+      <JFXTextField fx:id="quant" layoutX="16.0" layoutY="182.0" prefHeight="39.0" prefWidth="214.0" promptText="Enter Quantity" />
       <JFXTextField fx:id="discountper" layoutX="290.0" layoutY="405.0" prefHeight="26.0" prefWidth="68.0" promptText="Discount %" />
       <Label layoutX="201.0" layoutY="405.0" text="Discount :">
          <font>
@@ -93,10 +93,8 @@
          </font>
       </Label>
       <TextArea fx:id="area" layoutX="792.0" layoutY="61.0" prefHeight="436.0" prefWidth="290.0" />
-      <JFXComboBox fx:id="catcombo" layoutX="16.0" layoutY="216.0" prefHeight="26.0" prefWidth="214.0" promptText="Select Category" />
-      <JFXComboBox fx:id="prodcombo" layoutX="16.0" layoutY="266.0" onMouseClicked="#validation" prefHeight="26.0" prefWidth="214.0" promptText="Select Product" />
-      <JFXTextField fx:id="searchprod" layoutX="12.0" layoutY="98.0" prefHeight="26.0" prefWidth="181.0" promptText="Search Dish" />
-      <JFXTextField fx:id="searchquant" layoutX="12.0" layoutY="141.0" prefHeight="26.0" prefWidth="181.0" promptText="Enter Quantity" />
+      <JFXComboBox fx:id="catcombo" layoutX="16.0" layoutY="97.0" prefHeight="26.0" prefWidth="214.0" promptText="Select Category" />
+      <JFXComboBox fx:id="prodcombo" layoutX="16.0" layoutY="141.0" onMouseClicked="#validation" prefHeight="26.0" prefWidth="214.0" promptText="Select Product" />
       <CheckBox fx:id="cgstcheck" layoutX="506.0" layoutY="324.0" mnemonicParsing="false" text="CGST(2.5%) :">
          <font>
             <Font size="18.0" />
@@ -112,8 +110,7 @@
             <Font size="18.0" />
          </font>
       </CheckBox>
-      <Button fx:id="addsearch" layoutX="194.0" layoutY="142.0" mnemonicParsing="false" onAction="#search" prefHeight="26.0" prefWidth="84.0" text="Add Item" />
-      <Button layoutX="16.0" layoutY="355.0" mnemonicParsing="false" onAction="#addbillitem" prefHeight="39.0" prefWidth="104.0" text="Add Item" />
+      <Button layoutX="14.0" layoutY="251.0" mnemonicParsing="false" onAction="#addbillitem" prefHeight="39.0" prefWidth="104.0" text="Add Item" />
       <Button layoutX="282.0" layoutY="280.0" mnemonicParsing="false" onAction="#removeitem" prefHeight="26.0" prefWidth="104.0" text="Remove Item" />
       <Button layoutX="17.0" layoutY="445.0" mnemonicParsing="false" onAction="#generatereceipt" prefHeight="39.0" prefWidth="154.0" text="Generate Bill" />
       <Button layoutX="194.0" layoutY="447.0" mnemonicParsing="false" onAction="#print" prefHeight="39.0" prefWidth="154.0" text="Print Bill" />

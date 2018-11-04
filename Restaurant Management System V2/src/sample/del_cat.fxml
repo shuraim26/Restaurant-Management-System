@@ -36,7 +36,7 @@
             <FontAwesomeIcon glyphName="SIGN_OUT" size="45" />
          </graphic>
       </JFXButton>
-      <Label alignment="CENTER" layoutX="451.0" layoutY="221.0" prefHeight="54.0" prefWidth="386.0" text="Update Category">
+      <Label alignment="CENTER" layoutX="451.0" layoutY="221.0" prefHeight="54.0" prefWidth="386.0" text="Delete Category">
          <font>
             <Font name="System Bold Italic" size="30.0" />
          </font>

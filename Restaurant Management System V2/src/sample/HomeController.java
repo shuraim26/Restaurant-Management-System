@@ -44,7 +44,7 @@ public class HomeController {
     public void orders(ActionEvent actionEvent) throws IOException {
         Stage stage = (Stage) orders.getScene().getWindow();
         AnchorPane root;
-        root = (AnchorPane) FXMLLoader.load(getClass().getResource("orders.fxml"));
+        root = (AnchorPane) FXMLLoader.load(getClass().getResource("vieworders.fxml"));
         Scene scene = new Scene(root);
         stage.setScene(scene);
     }
