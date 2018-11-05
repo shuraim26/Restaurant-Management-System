@@ -99,7 +99,7 @@ public class AddEmpController {
     public void back(ActionEvent actionEvent) throws IOException {
         Stage stage = (Stage) back.getScene().getWindow();
         AnchorPane root;
-        root = (AnchorPane) FXMLLoader.load(getClass().getResource("dashboard.fxml"));
+        root = (AnchorPane) FXMLLoader.load(getClass().getResource("admin_dashboard.fxml"));
         Scene scene = new Scene(root);
         stage.setScene(scene);
     }
@@ -108,7 +108,7 @@ public class AddEmpController {
     public void home(ActionEvent actionEvent) throws IOException {
         Stage stage = (Stage) home.getScene().getWindow();
         AnchorPane root;
-        root = (AnchorPane) FXMLLoader.load(getClass().getResource("home.fxml"));
+        root = (AnchorPane) FXMLLoader.load(getClass().getResource("home_admin.fxml"));
         Scene scene = new Scene(root);
         stage.setScene(scene);
     }
