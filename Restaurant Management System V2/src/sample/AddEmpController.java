@@ -1,6 +1,7 @@
 package sample;
 
 import com.jfoenix.controls.JFXButton;
+import com.jfoenix.controls.JFXPasswordField;
 import com.jfoenix.controls.JFXTextField;
 import com.mysql.cj.protocol.Resultset;
 import javafx.event.ActionEvent;
@@ -35,10 +36,10 @@ public class AddEmpController {
     private JFXButton ok;
 
     @FXML
-    private JFXTextField pass;
+    private JFXPasswordField pass;
 
     @FXML
-    private JFXTextField repass;
+    private JFXPasswordField repass;
 
     Connection con=DBConnection.getConnection();
     PreparedStatement ps=null;
@@ -63,7 +64,7 @@ public class AddEmpController {
             errorAlert.setContentText("Please Enter Password!");
             errorAlert.showAndWait();
         }
-        else if(pass.getText()!=repass.getText())
+        else if(pass.getText()==repass.getText())
         {
             Alert errorAlert = new Alert(Alert.AlertType.ERROR);
             errorAlert.setHeaderText("Input Error!");
@@ -81,8 +82,10 @@ public class AddEmpController {
                 errorAlert.setContentText("Username Already Exists");
                 errorAlert.showAndWait();
             } else {
-                String sql="insert into users values('"+uname.getText()+"','"+pass.getText()+"'";
+                String sql="insert into users values(?,?)";
                 ps = con.prepareStatement(sql);
+                ps.setString(1,pass.getText());
+                ps.setString(2,repass.getText());
                 ps.executeUpdate();
 
                 Alert infoAlert = new Alert(Alert.AlertType.INFORMATION);
@@ -91,6 +94,8 @@ public class AddEmpController {
                 infoAlert.showAndWait();
 
                 uname.setText("");
+                pass.setText("");
+                repass.setText("");
             }
         }
     }
@@ -99,7 +104,7 @@ public class AddEmpController {
     public void back(ActionEvent actionEvent) throws IOException {
         Stage stage = (Stage) back.getScene().getWindow();
         AnchorPane root;
-        root = (AnchorPane) FXMLLoader.load(getClass().getResource("admin_dashboard.fxml"));
+        root = (AnchorPane) FXMLLoader.load(getClass().getResource("users.fxml"));
         Scene scene = new Scene(root);
         stage.setScene(scene);
     }

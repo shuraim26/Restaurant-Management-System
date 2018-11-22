@@ -104,7 +104,7 @@ public class UsersController {
     public void back(ActionEvent actionEvent) throws IOException {
         Stage stage = (Stage) back.getScene().getWindow();
         AnchorPane root;
-        root = (AnchorPane) FXMLLoader.load(getClass().getResource("sample.fxml"));
+        root = (AnchorPane) FXMLLoader.load(getClass().getResource("home_admin.fxml"));
         Scene scene = new Scene(root);
         stage.setScene(scene);
     }

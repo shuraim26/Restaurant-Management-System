@@ -25,7 +25,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
 
-public class DispAdminController implements Initializable {
+public class DispDishAdminController implements Initializable {
 
     @FXML
     private JFXButton back;
@@ -40,50 +40,79 @@ public class DispAdminController implements Initializable {
     private JFXTextField search;
 
     @FXML
-    private TableView<ModelAdminTable> table;
+    private TableView<ModelDishTable> table;
 
     @FXML
-    private TableColumn<?, ?> uname_col;
+    private TableColumn<?, ?> dish_id_col;
 
-    ObservableList<ModelAdminTable> oblist= FXCollections.observableArrayList();
+    @FXML
+    private TableColumn<?, ?> dish_name_col;
+
+    @FXML
+    private TableColumn<?, ?> cat_id_col;
+
+    @FXML
+    private TableColumn<?, ?> cat_name_col;
+
+    @FXML
+    private TableColumn<?, ?> dish_price_col;
+
+    ObservableList<ModelDishTable> oblist= FXCollections.observableArrayList();
+
+    Connection con=DBConnection.getConnection();
+    PreparedStatement ps1=null;
+    PreparedStatement ps2=null;
+    ResultSet rs1=null;
+    ResultSet rs2=null;
+
+    public DispDishAdminController() throws SQLException {
+    }
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
         try {
-            Connection con= DBConnection.getConnection();
 
-            String sql="select * from admins";
-            PreparedStatement ps=con.prepareStatement(sql);
-            ResultSet rs=ps.executeQuery();
+            String sql1="select * from dishes";
+            ps1=con.prepareStatement(sql1);
+            rs1=ps1.executeQuery();
 
-            while(rs.next())
+            while(rs1.next())
             {
-                oblist.add(new ModelAdminTable(rs.getString("username")));
+                String sql2 = "select * from prices where dish_id=" + rs1.getString("dish_id");
+                ps2 = con.prepareStatement(sql2);
+                rs2 = ps2.executeQuery();
+
+                while(rs2.next())
+                    oblist.add(new ModelDishTable(rs1.getString("dish_id"),rs1.getString("dish_name"),rs1.getString("cat_id"),rs1.getString("cat_name"),rs2.getString("price")));
             }
 
         } catch (SQLException e) {
             e.printStackTrace();
         }
 
-        uname_col.setCellValueFactory(new PropertyValueFactory<>("uname"));
+        dish_id_col.setCellValueFactory(new PropertyValueFactory<>("dish_id"));
+        dish_name_col.setCellValueFactory(new PropertyValueFactory<>("dish_name"));
+        cat_id_col.setCellValueFactory(new PropertyValueFactory<>("cat_id"));
+        cat_name_col.setCellValueFactory(new PropertyValueFactory<>("cat_name"));
+        dish_price_col.setCellValueFactory(new PropertyValueFactory<>("dish_price"));
 
         table.setItems(oblist);
 
-        FilteredList<ModelAdminTable> filteredData = new FilteredList<>(oblist, p -> true);
+        FilteredList<ModelDishTable> filteredData = new FilteredList<>(oblist, p -> true);
         search.textProperty().addListener((observable, oldValue, newValue) -> {
             filteredData.setPredicate(temp -> {
                 if (newValue == null || newValue.isEmpty()) {
                     return true;
                 }
                 String lowerCaseFilter = newValue.toLowerCase();
-                if (temp.getUname().toLowerCase().contains(lowerCaseFilter)) {
+                if (temp.getDish_name().toLowerCase().contains(lowerCaseFilter)) {
                     return true;
                 }
                 return false;
             });
         });
-        SortedList<ModelAdminTable> sortedData = new SortedList<>(filteredData);
+        SortedList<ModelDishTable> sortedData = new SortedList<>(filteredData);
         sortedData.comparatorProperty().bind(table.comparatorProperty());
         table.setItems(sortedData);
     }
@@ -92,7 +121,7 @@ public class DispAdminController implements Initializable {
     public void back(ActionEvent actionEvent) throws IOException {
         Stage stage = (Stage) back.getScene().getWindow();
         AnchorPane root;
-        root = (AnchorPane) FXMLLoader.load(getClass().getResource("users.fxml"));
+        root = (AnchorPane) FXMLLoader.load(getClass().getResource("admin_dashboard.fxml"));
         Scene scene = new Scene(root);
         stage.setScene(scene);
     }

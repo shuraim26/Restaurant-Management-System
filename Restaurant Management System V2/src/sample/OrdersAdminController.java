@@ -29,7 +29,7 @@ import java.sql.SQLException;
 import java.util.ResourceBundle;
 import java.util.Scanner;
 
-public class OrdersController implements Initializable {
+public class OrdersAdminController implements Initializable {
 
     @FXML
     private JFXButton ordersbackbtn;
@@ -58,7 +58,7 @@ public class OrdersController implements Initializable {
     public void ordersbackbtnpressed(ActionEvent actionEvent) throws IOException {
         Stage stage = (Stage) ordersbackbtn.getScene().getWindow();
         AnchorPane root;
-        root = (AnchorPane) FXMLLoader.load(getClass().getResource("home.fxml"));
+        root = (AnchorPane) FXMLLoader.load(getClass().getResource("home_admin.fxml"));
         Scene scene = new Scene(root);
         stage.setScene(scene);
     }
@@ -67,7 +67,7 @@ public class OrdersController implements Initializable {
     public void ordersbhomebtnpressed(ActionEvent actionEvent) throws IOException {
         Stage stage = (Stage) ordershomebtn.getScene().getWindow();
         AnchorPane root;
-        root = (AnchorPane) FXMLLoader.load(getClass().getResource("home.fxml"));
+        root = (AnchorPane) FXMLLoader.load(getClass().getResource("home_admin.fxml"));
         Scene scene = new Scene(root);
         stage.setScene(scene);
     }

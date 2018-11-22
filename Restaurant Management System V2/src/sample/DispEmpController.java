@@ -92,7 +92,7 @@ public class DispEmpController implements Initializable {
     public void back(ActionEvent actionEvent) throws IOException {
         Stage stage = (Stage) back.getScene().getWindow();
         AnchorPane root;
-        root = (AnchorPane) FXMLLoader.load(getClass().getResource("admin_dashboard.fxml"));
+        root = (AnchorPane) FXMLLoader.load(getClass().getResource("users.fxml"));
         Scene scene = new Scene(root);
         stage.setScene(scene);
     }

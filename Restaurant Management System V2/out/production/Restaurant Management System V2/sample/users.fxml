@@ -49,7 +49,7 @@
             <FontAwesomeIcon glyphName="SIGN_OUT" size="45" />
          </graphic>
       </JFXButton>
-      <Button fx:id="add_admin" layoutX="368.0" layoutY="387.0" mnemonicParsing="false" onAction="#add_admin" prefHeight="26.0" prefWidth="131.0" text="Add User" />
+      <Button fx:id="add_admin" layoutX="368.0" layoutY="398.0" mnemonicParsing="false" onAction="#add_admin" prefHeight="26.0" prefWidth="131.0" text="Add User" />
       <Button fx:id="del_admin" layoutX="578.0" layoutY="398.0" mnemonicParsing="false" onAction="#del_admin" prefHeight="26.0" prefWidth="131.0" text="Delete User" />
       <Button fx:id="disp_admin" layoutX="785.0" layoutY="398.0" mnemonicParsing="false" onAction="#disp_admin" prefHeight="26.0" prefWidth="131.0" text="Display Users" />
    </children>

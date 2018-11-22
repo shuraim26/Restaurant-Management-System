@@ -25,7 +25,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
 
-public class DispAdminController implements Initializable {
+public class DispCatAdminController implements Initializable {
 
     @FXML
     private JFXButton back;
@@ -40,12 +40,15 @@ public class DispAdminController implements Initializable {
     private JFXTextField search;
 
     @FXML
-    private TableView<ModelAdminTable> table;
+    private TableView<ModelCatTable> table;
 
     @FXML
-    private TableColumn<?, ?> uname_col;
+    private TableColumn<?, ?> cat_id_col;
 
-    ObservableList<ModelAdminTable> oblist= FXCollections.observableArrayList();
+    @FXML
+    private TableColumn<?, ?> cat_name_col;
+
+    ObservableList<ModelCatTable> oblist= FXCollections.observableArrayList();
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -53,37 +56,38 @@ public class DispAdminController implements Initializable {
         try {
             Connection con= DBConnection.getConnection();
 
-            String sql="select * from admins";
+            String sql="select * from categories";
             PreparedStatement ps=con.prepareStatement(sql);
             ResultSet rs=ps.executeQuery();
 
             while(rs.next())
             {
-                oblist.add(new ModelAdminTable(rs.getString("username")));
+                oblist.add(new ModelCatTable(rs.getString("cat_id"),rs.getString("cat_name")));
             }
 
         } catch (SQLException e) {
             e.printStackTrace();
         }
 
-        uname_col.setCellValueFactory(new PropertyValueFactory<>("uname"));
+        cat_id_col.setCellValueFactory(new PropertyValueFactory<>("cat_id"));
+        cat_name_col.setCellValueFactory(new PropertyValueFactory<>("cat_name"));
 
         table.setItems(oblist);
 
-        FilteredList<ModelAdminTable> filteredData = new FilteredList<>(oblist, p -> true);
+        FilteredList<ModelCatTable> filteredData = new FilteredList<>(oblist, p -> true);
         search.textProperty().addListener((observable, oldValue, newValue) -> {
             filteredData.setPredicate(temp -> {
                 if (newValue == null || newValue.isEmpty()) {
                     return true;
                 }
                 String lowerCaseFilter = newValue.toLowerCase();
-                if (temp.getUname().toLowerCase().contains(lowerCaseFilter)) {
+                if (temp.getCat_name().toLowerCase().contains(lowerCaseFilter)) {
                     return true;
                 }
                 return false;
             });
         });
-        SortedList<ModelAdminTable> sortedData = new SortedList<>(filteredData);
+        SortedList<ModelCatTable> sortedData = new SortedList<>(filteredData);
         sortedData.comparatorProperty().bind(table.comparatorProperty());
         table.setItems(sortedData);
     }
@@ -92,7 +96,7 @@ public class DispAdminController implements Initializable {
     public void back(ActionEvent actionEvent) throws IOException {
         Stage stage = (Stage) back.getScene().getWindow();
         AnchorPane root;
-        root = (AnchorPane) FXMLLoader.load(getClass().getResource("users.fxml"));
+        root = (AnchorPane) FXMLLoader.load(getClass().getResource("admin_dashboard.fxml"));
         Scene scene = new Scene(root);
         stage.setScene(scene);
     }

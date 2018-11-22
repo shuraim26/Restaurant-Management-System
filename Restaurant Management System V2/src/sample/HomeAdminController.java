@@ -47,7 +47,7 @@ public class HomeAdminController {
     public void orders(ActionEvent actionEvent) throws IOException {
         Stage stage = (Stage) orders.getScene().getWindow();
         AnchorPane root;
-        root = (AnchorPane) FXMLLoader.load(getClass().getResource("vieworders.fxml"));
+        root = (AnchorPane) FXMLLoader.load(getClass().getResource("vieworders_admin.fxml"));
         Scene scene = new Scene(root);
         stage.setScene(scene);
     }
@@ -56,7 +56,7 @@ public class HomeAdminController {
     public void bill(ActionEvent actionEvent) throws IOException {
         Stage stage = (Stage) bill.getScene().getWindow();
         AnchorPane root;
-        root = (AnchorPane) FXMLLoader.load(getClass().getResource("bill.fxml"));
+        root = (AnchorPane) FXMLLoader.load(getClass().getResource("bill_admin.fxml"));
         Scene scene = new Scene(root);
         stage.setScene(scene);
     }
@@ -74,7 +74,7 @@ public class HomeAdminController {
     public void home(ActionEvent actionEvent) throws IOException {
         Stage stage = (Stage) home.getScene().getWindow();
         AnchorPane root;
-        root = (AnchorPane) FXMLLoader.load(getClass().getResource("home.fxml"));
+        root = (AnchorPane) FXMLLoader.load(getClass().getResource("home_admin.fxml"));
         Scene scene = new Scene(root);
         stage.setScene(scene);
     }

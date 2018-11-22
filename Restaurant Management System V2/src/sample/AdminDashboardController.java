@@ -77,7 +77,7 @@ public class AdminDashboardController {
     public void disp_cat(ActionEvent actionEvent) throws IOException {
         Stage stage = (Stage) disp_cat.getScene().getWindow();
         AnchorPane root;
-        root = (AnchorPane) FXMLLoader.load(getClass().getResource("disp_cat.fxml"));
+        root = (AnchorPane) FXMLLoader.load(getClass().getResource("disp_cat_admin.fxml"));
         Scene scene = new Scene(root);
         stage.setScene(scene);
     }
@@ -113,7 +113,7 @@ public class AdminDashboardController {
     public void disp_dish(ActionEvent actionEvent) throws IOException {
         Stage stage = (Stage) disp_dish.getScene().getWindow();
         AnchorPane root;
-        root = (AnchorPane) FXMLLoader.load(getClass().getResource("disp_dish.fxml"));
+        root = (AnchorPane) FXMLLoader.load(getClass().getResource("disp_dish_admin.fxml"));
         Scene scene = new Scene(root);
         stage.setScene(scene);
     }

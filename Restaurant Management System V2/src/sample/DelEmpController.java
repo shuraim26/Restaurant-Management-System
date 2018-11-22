@@ -50,12 +50,12 @@ public class DelEmpController {
             errorAlert.showAndWait();
         } else {
 
-            String sql = "select username from users where username=" + uname.getText();
+            String sql = "select username from users where username='" + uname.getText()+"'";
             ps = con.prepareStatement(sql);
             rs = ps.executeQuery();
 
             if (rs.next()) {
-                String sql1 = "delete from users where username=" + uname.getText();
+                String sql1 = "delete from users where username='" + uname.getText()+"'";
                 ps = con.prepareStatement(sql1);
                 ps.executeUpdate();
 
@@ -76,7 +76,7 @@ public class DelEmpController {
     public void back(ActionEvent actionEvent) throws IOException {
         Stage stage = (Stage) back.getScene().getWindow();
         AnchorPane root;
-        root = (AnchorPane) FXMLLoader.load(getClass().getResource("admin_dashboard.fxml"));
+        root = (AnchorPane) FXMLLoader.load(getClass().getResource("users.fxml"));
         Scene scene = new Scene(root);
         stage.setScene(scene);
     }
